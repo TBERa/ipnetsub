@@ -58,7 +58,7 @@ unsigned int broadcast(unsigned int netid, int msk)
 
 
 
-	while (loopA <= (32-msk))
+	while (loopA <= (31-msk))
 	{
 		rt = rt << 1;
 		rt = rt + 1;
