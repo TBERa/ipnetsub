@@ -6,20 +6,14 @@ unsigned int subnetinput()
 	unsigned int msk = 0;
 	unsigned char sba, sbb, sbc, sbd;
 
-	printf("¼­ºê³Ý ¸¶½ºÅ©(1¿ÁÅÝ) : ");
-	scanf("%hhd", &sba);
+	printf("¼­ºê³Ý ¸¶½ºÅ© : ");
+	scanf("%hhd.%hhd.%hhd.%hhd", &sba,&sbb,&sbc,&sbd);
 	msk = sba;
-	printf("¼­ºê³Ý ¸¶½ºÅ©(2¿ÁÅÝ) : %d . ", sba);
 	msk = msk << 8;
-	scanf("%hhd", &sbb);
 	msk = msk | sbb;
-	printf("¼­ºê³Ý ¸¶½ºÅ©(3¿ÁÅÝ) : %d . %d . ", sba, sbb);
 	msk = msk << 8;
-	scanf("%hhd", &sbc);
 	msk = msk | sbc;
-	printf("¼­ºê³Ý ¸¶½ºÅ©(4¿ÁÅÝ) : %d . %d . %d . ", sba, sbb, sbc);
 	msk = msk << 8;
-	scanf("%hhd", &sbd);
 	msk = msk | sbd;
 
 	return msk;
@@ -30,21 +24,20 @@ unsigned int ipinput()
 {
 	unsigned char ipa, ipb, ipc, ipd;
 	unsigned int ip = 0;
-	printf("ip ÀÔ·Â(1¿ÁÅÝ) : ");
-	scanf("%hhd", &ipa);
+	printf("ip ÀÔ·Â : ");
+	scanf("%hhd.%hhd.%hhd.%hhd", &ipa,&ipb,&ipc,&ipd);
 		ip = ipa; 
-	printf("ip ÀÔ·Â(2¿ÁÅÝ) : %d . ", ipa);
 		ip = ip << 8;
-	scanf("%hhd", &ipb);
 		ip = ip | ipb;
-	printf("ip ÀÔ·Â(3¿ÁÅÝ) : %d . %d . ", ipa, ipb);
 		ip = ip << 8;
-	scanf("%hhd", &ipc);
 		ip = ip | ipc;
-	printf("ip ÀÔ·Â(4¿ÁÅÝ) : %d . %d . %d . ", ipa, ipb, ipc);
 		ip = ip << 8;
-	scanf("%hhd", &ipd);
 		ip = ip | ipd;
+		if (ipa < 0 | ipb < 0 | ipc < 0 | ipd < 0 | ipa > 255 | ipb > 255 | ipc > 255 | ipd > 255)
+		{
+			printf("¿Ã¹Ù¸£Áö ¾ÊÀº ¾ÆÀÌÇÇ ÁÖ¼Ò");
+			return 0x7F000000;
+		}
 
 	return ip;
 }
